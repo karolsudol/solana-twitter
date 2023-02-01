@@ -33,9 +33,9 @@ describe("Solana Twitter Anchor Tests", async () => {
       address
     );
     console.log(`Solana Twitter Account: ${address}`);
-    console.log(`   Username: ${accountInfo.handle}`);
-    console.log(`   Display Name: ${accountInfo.name}`);
-    console.log(`   Belongs to: ${accountInfo.authority}`);
+    console.log(`Username: ${accountInfo.handle}`);
+    console.log(`Display Name: ${accountInfo.displayName}`);
+    console.log(`Belongs to: ${accountInfo.authority}`);
   }
   it("Create new Solana Twitter account", async () => {
     await program.methods
@@ -65,7 +65,7 @@ describe("Solana Twitter Anchor Tests", async () => {
     // Fetch existing display name
     const existingDisplayName = (
       await program.account.solanaTwitterAccountInfo.fetch(testSolanaTwitterPda)
-    ).name;
+    ).displayName;
     await updateTwitterAccount("solana_beast", existingDisplayName);
     await printTwitterAccountInfo(testSolanaTwitterPda);
   });
@@ -104,7 +104,7 @@ describe("Solana Twitter Anchor Tests", async () => {
       `   Solana Twitter Account: ${tweetAccountInfo.twitterAccountPubkey}`
     );
     console.log(`   Username: ${twitterAccountInfo.handle}`);
-    console.log(`   Display Name: ${twitterAccountInfo.name}`);
+    console.log(`   Display Name: ${twitterAccountInfo.displayName}`);
     console.log(`   Belongs to: ${twitterAccountInfo.authority}`);
     console.log(`   Body: ${tweetAccountInfo.body}`);
   }
@@ -155,7 +155,7 @@ describe("Solana Twitter Anchor Tests", async () => {
           pa.account.twitterAccountPubkey
         );
       console.log(twitterAccount.handle);
-      console.log(twitterAccount.name);
+      console.log(twitterAccount.displayName);
       console.log(pa.account.tweetNumber);
       console.log(pa.account.body);
     }
