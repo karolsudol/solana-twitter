@@ -10,7 +10,7 @@ pub fn modify_user_account(
 ) -> Result<()> {
     msg!("Modifying Solana Twitter account...");
 
-    let existing_twitter_account = &mut ctx.accounts.twitter_account.key();
+    let existing_twitter_account = &mut ctx.accounts.twitter_account;
     existing_twitter_account.handle = handle;
     existing_twitter_account.display_name = display_name;
 
@@ -39,6 +39,5 @@ pub struct ModifyUserAccount<'info> {
 
     #[account(mut)]
     pub authority: Signer<'info>,
-
     pub system_program: Program<'info,System>
 }
