@@ -2,7 +2,7 @@ import * as anchor from "@project-serum/anchor";
 import { SolanaTwitter } from "../target/types/solana_twitter";
 import { assert } from "chai";
 
-describe("Solana Twitter Anchor Tests", async () => {
+describe("solana-twitter", async () => {
   const provider = anchor.AnchorProvider.env();
   anchor.setProvider(provider);
 
@@ -157,15 +157,13 @@ describe("Solana Twitter Anchor Tests", async () => {
     assert.equal(tweetCount_0, 0);
     // console.log(`Tweet Count: ${tweetCount}`);
 
-    const tweetPdaAddress = (
-      await anchor.web3.PublicKey.findProgramAddress(
-        [
-          testWallet.publicKey.toBuffer(),
-          Buffer.from("_tweet_"),
-          Buffer.from((tweetCount_0 + 1).toString()),
-        ],
-        program.programId
-      )
+    const tweetPdaAddress = anchor.web3.PublicKey.findProgramAddressSync(
+      [
+        testWallet.publicKey.toBuffer(),
+        Buffer.from("_tweet_"),
+        Buffer.from((tweetCount_0 + 1).toString()),
+      ],
+      program.programId
     )[0];
 
     const tweet = "Hello everybody";
