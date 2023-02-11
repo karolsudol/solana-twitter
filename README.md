@@ -3,7 +3,7 @@
 ## ATCHITECTURE
 
 <br/>
-<p align="center">
+<!-- <p align="center"> -->
 <img src="img/solana_twitter.jpg" >
 </a>
 </p>
